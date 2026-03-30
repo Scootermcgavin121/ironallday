@@ -1,0 +1,89 @@
+"use client";
+
+import { useState } from "react";
+
+const NAV_LINKS = [
+  { label: "Shop", href: "#shop" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-sm border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2">
+            <span className="text-xl font-black uppercase tracking-[0.2em] text-foreground">
+              Iron <span className="text-accent">All Day</span>
+            </span>
+          </a>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-semibold uppercase tracking-widest text-muted hover:text-accent transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#shop"
+              className="bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider px-5 py-2 transition-colors"
+            >
+              Shop Now
+            </a>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-6 h-0.5 bg-foreground transition-transform ${open ? "rotate-45 translate-y-2" : ""}`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-foreground transition-opacity ${open ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-foreground transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`}
+            />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden bg-[#0A0A0A] border-t border-white/5">
+          <div className="px-4 py-4 space-y-3">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block text-sm font-semibold uppercase tracking-widest text-muted hover:text-accent transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#shop"
+              onClick={() => setOpen(false)}
+              className="block bg-accent text-white text-sm font-bold uppercase tracking-wider px-5 py-2 text-center transition-colors"
+            >
+              Shop Now
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
