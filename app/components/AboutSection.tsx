@@ -1,3 +1,12 @@
+import { FlaskConical, Package, Clock } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+
+const STATS = [
+  { icon: FlaskConical, value: "99%+", label: "Purity" },
+  { icon: Package, value: "50K+", label: "Orders Shipped" },
+  { icon: Clock, value: "24h", label: "Avg. Ship Time" },
+];
+
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 bg-surface">
@@ -32,34 +41,30 @@ export default function AboutSection() {
               </p>
             </div>
 
+            <Separator className="my-8 bg-white/10" />
+
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-10">
-              <div>
-                <div className="text-3xl font-black text-accent">99%+</div>
-                <div className="text-xs text-muted uppercase tracking-wider mt-1">
-                  Purity
+            <div className="grid grid-cols-3 gap-6">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="text-center sm:text-left">
+                  <div className="flex items-center gap-2 justify-center sm:justify-start mb-1">
+                    <stat.icon className="w-5 h-5 text-accent" strokeWidth={1.5} />
+                    <span className="text-3xl font-black text-accent">{stat.value}</span>
+                  </div>
+                  <div className="text-xs text-muted uppercase tracking-wider">
+                    {stat.label}
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div className="text-3xl font-black text-accent">50K+</div>
-                <div className="text-xs text-muted uppercase tracking-wider mt-1">
-                  Orders Shipped
-                </div>
-              </div>
-              <div>
-                <div className="text-3xl font-black text-accent">24h</div>
-                <div className="text-xs text-muted uppercase tracking-wider mt-1">
-                  Avg. Ship Time
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Right — visual block */}
           <div className="relative">
-            <div className="aspect-square bg-[#111] border border-white/5 flex items-center justify-center">
-              <div className="text-center px-8">
-                <div className="text-6xl sm:text-7xl font-black text-white/5 uppercase leading-none">
+            <div className="aspect-square bg-gradient-to-br from-[#111] to-[#0d0d0d] border border-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 bg-accent/[0.02]" />
+              <div className="text-center px-8 relative z-10">
+                <div className="text-6xl sm:text-7xl font-black text-white/[0.06] uppercase leading-none">
                   Iron
                   <br />
                   All
@@ -71,8 +76,8 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-            {/* Accent corner */}
-            <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-accent" />
+            {/* Accent glow */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/10 rounded-full blur-3xl" />
           </div>
         </div>
       </div>

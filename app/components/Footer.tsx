@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
 
 const FOOTER_LINKS = {
   Shop: [
@@ -21,6 +22,13 @@ const FOOTER_LINKS = {
   ],
 };
 
+const SOCIALS = [
+  { name: "X", href: "#" },
+  { name: "IG", href: "#" },
+  { name: "YT", href: "#" },
+  { name: "TG", href: "#" },
+];
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-surface border-t border-white/5">
@@ -31,8 +39,8 @@ export default function Footer() {
             <Image
               src="/images/iad-logo.png"
               alt="Iron All Day"
-              width={160}
-              height={50}
+              width={200}
+              height={65}
               className="h-36 w-auto object-contain"
             />
             <p className="text-sm text-muted mt-4 leading-relaxed">
@@ -40,14 +48,14 @@ export default function Footer() {
               Recovery. Longevity.
             </p>
             {/* Socials */}
-            <div className="flex gap-4 mt-6">
-              {["X", "IG", "YT", "TG"].map((social) => (
+            <div className="flex gap-3 mt-6">
+              {SOCIALS.map((social) => (
                 <a
-                  key={social}
-                  href="#"
-                  className="w-9 h-9 bg-white/5 hover:bg-accent/20 border border-white/10 hover:border-accent/40 flex items-center justify-center text-xs font-bold text-muted hover:text-accent transition-colors"
+                  key={social.name}
+                  href={social.href}
+                  className="w-10 h-10 bg-white/5 hover:bg-accent/20 border border-white/10 hover:border-accent/40 rounded-lg flex items-center justify-center text-xs font-bold text-muted hover:text-accent transition-all duration-200"
                 >
-                  {social}
+                  {social.name}
                 </a>
               ))}
             </div>
@@ -59,7 +67,7 @@ export default function Footer() {
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground mb-4">
                 {title}
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
                     <a
@@ -76,20 +84,19 @@ export default function Footer() {
         </div>
       </div>
 
+      <Separator className="bg-white/5" />
+
       {/* Bottom bar */}
-      <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-muted">
-              © 2026 Iron All Day. All rights reserved.
-            </p>
-            <p className="text-xs text-muted/60 text-center md:text-right max-w-md">
-              All products are intended for laboratory and research use only.
-              Not for human consumption. By purchasing, you agree that products
-              are not intended to diagnose, treat, cure, or prevent any
-              disease.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted">
+            © 2026 Iron All Day. All rights reserved.
+          </p>
+          <p className="text-xs text-muted/60 text-center md:text-right max-w-md">
+            All products are intended for laboratory and research use only.
+            Not for human consumption. By purchasing, you agree that products
+            are not intended to diagnose, treat, cure, or prevent any disease.
+          </p>
         </div>
       </div>
     </footer>

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Menu, X, ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
   { label: "Shop", href: "#shop" },
@@ -13,7 +15,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-sm border-b border-white/5">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-40 md:h-48">
           {/* Logo */}
@@ -21,8 +23,8 @@ export default function Navbar() {
             <Image
               src="/images/iad-logo.png"
               alt="Iron All Day"
-              width={200}
-              height={60}
+              width={300}
+              height={90}
               className="h-36 md:h-44 w-auto object-contain"
               priority
             />
@@ -39,54 +41,51 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#shop"
-              className="bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider px-5 py-2 transition-colors"
+            <Button
+              asChild
+              className="bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider gap-2 rounded-lg"
             >
-              Shop Now
-            </a>
+              <a href="#shop">
+                <ShoppingCart className="w-4 h-4" />
+                Shop Now
+              </a>
+            </Button>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="md:hidden p-2 text-foreground hover:text-accent transition-colors"
             aria-label="Toggle menu"
           >
-            <span
-              className={`block w-6 h-0.5 bg-foreground transition-transform ${open ? "rotate-45 translate-y-2" : ""}`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-foreground transition-opacity ${open ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-foreground transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`}
-            />
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0A0A0A] border-t border-white/5">
+        <div className="md:hidden bg-[#0A0A0A] border-t border-white/5 animate-in slide-in-from-top-2">
           <div className="px-4 py-4 space-y-3">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block text-sm font-semibold uppercase tracking-widest text-muted hover:text-accent transition-colors"
+                className="block text-sm font-semibold uppercase tracking-widest text-muted hover:text-accent transition-colors py-2"
               >
                 {link.label}
               </a>
             ))}
-            <a
-              href="#shop"
-              onClick={() => setOpen(false)}
-              className="block bg-accent text-white text-sm font-bold uppercase tracking-wider px-5 py-2 text-center transition-colors"
+            <Button
+              asChild
+              className="w-full bg-accent text-white text-sm font-bold uppercase tracking-wider rounded-lg gap-2"
             >
-              Shop Now
-            </a>
+              <a href="#shop" onClick={() => setOpen(false)}>
+                <ShoppingCart className="w-4 h-4" />
+                Shop Now
+              </a>
+            </Button>
           </div>
         </div>
       )}

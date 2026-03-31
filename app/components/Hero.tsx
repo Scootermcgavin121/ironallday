@@ -1,3 +1,6 @@
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0A0A0A] via-[#111111] to-[#0A0A0A] overflow-hidden">
@@ -37,19 +40,30 @@ export default function Hero() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#shop"
-            className="inline-block bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-widest px-10 py-4 transition-colors"
+          <Button
+            asChild
+            size="lg"
+            className="bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-widest px-10 py-6 rounded-lg gap-2"
           >
-            Shop Peptides
-          </a>
-          <a
-            href="#about"
-            className="inline-block border border-white/20 hover:border-accent/50 text-foreground text-sm font-bold uppercase tracking-widest px-10 py-4 transition-colors"
+            <a href="#shop">
+              Shop Peptides
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-white/20 hover:border-accent/50 text-foreground text-sm font-bold uppercase tracking-widest px-10 py-6 rounded-lg bg-transparent"
           >
-            Learn More
-          </a>
+            <a href="#about">Learn More</a>
+          </Button>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <ChevronDown className="w-6 h-6 text-muted/40" />
       </div>
     </section>
   );

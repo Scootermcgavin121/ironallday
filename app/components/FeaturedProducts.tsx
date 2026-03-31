@@ -1,3 +1,8 @@
+import { ShoppingCart } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
 const PRODUCTS = [
   {
     name: "BPC-157",
@@ -72,21 +77,24 @@ export default function FeaturedProducts() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {PRODUCTS.map((product) => (
-            <div
+            <Card
               key={product.name}
-              className="group bg-surface border border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden"
+              className="group bg-surface border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden"
             >
               {/* Tag */}
               {product.tag && (
-                <div className="absolute top-0 right-0 bg-accent text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1">
-                  {product.tag}
+                <div className="absolute top-3 right-3 z-10">
+                  <Badge className="bg-accent text-white border-0 text-[10px] font-bold uppercase tracking-wider rounded-md px-2.5 py-1">
+                    {product.tag}
+                  </Badge>
                 </div>
               )}
 
               {/* Product image placeholder */}
-              <div className="aspect-square bg-[#111] flex items-center justify-center border-b border-white/5">
-                <div className="text-center">
-                  <div className="text-5xl font-black text-white/10 uppercase">
+              <div className="aspect-square bg-gradient-to-br from-[#111] to-[#0d0d0d] flex items-center justify-center border-b border-white/5 relative overflow-hidden">
+                <div className="absolute inset-0 bg-accent/[0.02] group-hover:bg-accent/[0.05] transition-colors" />
+                <div className="text-center relative z-10">
+                  <div className="text-5xl font-black text-white/[0.08] group-hover:text-white/[0.12] uppercase transition-colors">
                     {product.name.slice(0, 3)}
                   </div>
                 </div>
@@ -100,17 +108,21 @@ export default function FeaturedProducts() {
                 <h3 className="text-lg font-bold text-foreground mb-1">
                   {product.name}
                 </h3>
-                <p className="text-xs text-muted mb-3">{product.dosage} vial</p>
+                <p className="text-xs text-muted mb-4">{product.dosage} vial</p>
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-black text-foreground">
                     {product.price}
                   </span>
-                  <button className="bg-accent/10 hover:bg-accent text-accent hover:text-white text-xs font-bold uppercase tracking-wider px-4 py-2 transition-colors">
-                    Add to Cart
-                  </button>
+                  <Button
+                    size="sm"
+                    className="bg-accent/10 hover:bg-accent text-accent hover:text-white text-xs font-bold uppercase tracking-wider gap-2 rounded-lg transition-colors"
+                  >
+                    <ShoppingCart className="w-3.5 h-3.5" />
+                    Add
+                  </Button>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
