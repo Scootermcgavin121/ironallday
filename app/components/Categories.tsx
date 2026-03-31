@@ -51,7 +51,7 @@ export default function Categories() {
           {CATEGORIES.map((cat) => (
             <a key={cat.name} href="#shop">
               <Card className="group bg-surface border-white/5 hover:border-accent/40 p-8 transition-all duration-300 cursor-pointer h-full">
-                <div className="w-14 h-14 rounded-xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mb-5 transition-colors">
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mb-5 transition-colors">
                   <cat.icon className="w-7 h-7 text-accent" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-lg font-bold uppercase tracking-wide text-foreground group-hover:text-accent transition-colors mb-2">

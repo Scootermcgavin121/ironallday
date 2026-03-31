@@ -32,7 +32,7 @@ export default function Newsletter() {
         </p>
 
         {submitted ? (
-          <div className="bg-accent/10 border border-accent/30 rounded-xl p-6 flex items-center justify-center gap-3">
+          <div className="bg-accent/10 border border-accent/30 rounded-2xl p-6 flex items-center justify-center gap-3">
             <CheckCircle className="w-5 h-5 text-accent" />
             <p className="text-accent font-bold uppercase tracking-wider">
               You&apos;re in. Welcome to the community.

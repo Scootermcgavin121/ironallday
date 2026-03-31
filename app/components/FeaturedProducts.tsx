@@ -91,7 +91,7 @@ export default function FeaturedProducts() {
               )}
 
               {/* Product image placeholder */}
-              <div className="aspect-square bg-gradient-to-br from-[#111] to-[#0d0d0d] flex items-center justify-center border-b border-white/5 relative overflow-hidden">
+              <div className="aspect-square bg-gradient-to-br from-[#111] to-[#0d0d0d] flex items-center justify-center border-b border-white/5 relative overflow-hidden rounded-t-2xl">
                 <div className="absolute inset-0 bg-accent/[0.02] group-hover:bg-accent/[0.05] transition-colors" />
                 <div className="text-center relative z-10">
                   <div className="text-5xl font-black text-white/[0.08] group-hover:text-white/[0.12] uppercase transition-colors">

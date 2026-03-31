@@ -53,7 +53,7 @@ export default function Footer() {
                 <a
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 bg-white/5 hover:bg-accent/20 border border-white/10 hover:border-accent/40 rounded-lg flex items-center justify-center text-xs font-bold text-muted hover:text-accent transition-all duration-200"
+                  className="w-10 h-10 bg-white/5 hover:bg-accent/20 border border-white/10 hover:border-accent/40 rounded-2xl flex items-center justify-center text-xs font-bold text-muted hover:text-accent transition-all duration-200"
                 >
                   {social.name}
                 </a>

@@ -35,7 +35,7 @@ export default function TrustBadges() {
               className="bg-transparent border-white/5 hover:border-accent/30 text-center p-6 transition-all duration-300"
             >
               <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
                   <badge.icon className="w-7 h-7 text-accent" strokeWidth={1.5} />
                 </div>
               </div>
