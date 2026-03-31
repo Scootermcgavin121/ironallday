@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Menu, X, ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
   { label: "Shop", href: "#shop" },
@@ -41,15 +40,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <Button
-              asChild
-              className="bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider gap-2 rounded-lg"
+            <a
+              href="#shop"
+              className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors"
             >
-              <a href="#shop">
-                <ShoppingCart className="w-4 h-4" />
-                Shop Now
-              </a>
-            </Button>
+              <ShoppingCart className="w-4 h-4" />
+              Shop Now
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -65,7 +62,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0A0A0A] border-t border-white/5 animate-in slide-in-from-top-2">
+        <div className="md:hidden bg-[#0A0A0A] border-t border-white/5">
           <div className="px-4 py-4 space-y-3">
             {NAV_LINKS.map((link) => (
               <a
@@ -77,15 +74,14 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <Button
-              asChild
-              className="w-full bg-accent text-white text-sm font-bold uppercase tracking-wider rounded-lg gap-2"
+            <a
+              href="#shop"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center gap-2 w-full bg-accent text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors"
             >
-              <a href="#shop" onClick={() => setOpen(false)}>
-                <ShoppingCart className="w-4 h-4" />
-                Shop Now
-              </a>
-            </Button>
+              <ShoppingCart className="w-4 h-4" />
+              Shop Now
+            </a>
           </div>
         </div>
       )}

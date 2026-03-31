@@ -1,5 +1,4 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
@@ -40,24 +39,19 @@ export default function Hero() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            asChild
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-widest px-10 py-6 rounded-lg gap-2"
+          <a
+            href="#shop"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-widest px-10 py-4 rounded-2xl transition-colors"
           >
-            <a href="#shop">
-              Shop Peptides
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-white/20 hover:border-accent/50 text-foreground text-sm font-bold uppercase tracking-widest px-10 py-6 rounded-lg bg-transparent"
+            Shop Peptides
+            <ArrowRight className="w-4 h-4" />
+          </a>
+          <a
+            href="#about"
+            className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-accent/50 text-foreground text-sm font-bold uppercase tracking-widest px-10 py-4 rounded-2xl bg-transparent transition-colors"
           >
-            <a href="#about">Learn More</a>
-          </Button>
+            Learn More
+          </a>
         </div>
       </div>
 
