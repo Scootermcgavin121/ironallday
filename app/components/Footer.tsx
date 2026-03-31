@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const FOOTER_LINKS = {
   Shop: [
     { label: "All Products", href: "#shop" },
@@ -26,9 +28,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <span className="text-lg font-black uppercase tracking-[0.15em] text-foreground">
-              Iron <span className="text-accent">All Day</span>
-            </span>
+            <Image
+              src="/images/iad-logo.png"
+              alt="Iron All Day"
+              width={160}
+              height={50}
+              className="h-10 w-auto object-contain"
+            />
             <p className="text-sm text-muted mt-4 leading-relaxed">
               Research-grade peptides for serious athletes. Performance.
               Recovery. Longevity.

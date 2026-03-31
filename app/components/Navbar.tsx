@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Shop", href: "#shop" },
@@ -16,10 +17,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <span className="text-xl font-black uppercase tracking-[0.2em] text-foreground">
-              Iron <span className="text-accent">All Day</span>
-            </span>
+          <a href="#" className="flex items-center">
+            <Image
+              src="/images/iad-logo.png"
+              alt="Iron All Day"
+              width={200}
+              height={60}
+              className="h-12 md:h-14 w-auto object-contain"
+              priority
+            />
           </a>
 
           {/* Desktop links */}
