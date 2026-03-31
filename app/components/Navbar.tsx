@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-sm border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24 md:h-28">
+        <div className="flex items-center justify-between h-40 md:h-48">
           {/* Logo */}
           <a href="#" className="flex items-center">
             <Image
@@ -23,7 +23,7 @@ export default function Navbar() {
               alt="Iron All Day"
               width={200}
               height={60}
-              className="h-20 md:h-24 w-auto object-contain"
+              className="h-36 md:h-44 w-auto object-contain"
               priority
             />
           </a>
