@@ -33,7 +33,7 @@ export default function Footer() {
               alt="Iron All Day"
               width={160}
               height={50}
-              className="h-10 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
             <p className="text-sm text-muted mt-4 leading-relaxed">
               Research-grade peptides for serious athletes. Performance.
