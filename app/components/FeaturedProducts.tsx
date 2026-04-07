@@ -44,8 +44,15 @@ export default function FeaturedProducts() {
           res = await fetch(FALLBACK_API, { next: { revalidate: 60 } } as RequestInit);
           data = await res.json();
         }
-        // Filter out supplies
-        setProducts(data.filter((p: Product) => p.category !== "supplies"));
+        // Filter out supplies, sort in-stock first
+        const filtered = data.filter((p: Product) => p.category !== "supplies");
+        filtered.sort((a: Product, b: Product) => {
+          const aStock = a.inStock && (a.stockQuantity ?? 0) > 0 ? 1 : 0;
+          const bStock = b.inStock && (b.stockQuantity ?? 0) > 0 ? 1 : 0;
+          if (bStock !== aStock) return bStock - aStock;
+          return a.name.localeCompare(b.name);
+        });
+        setProducts(filtered);
       } catch {
         // Fallback to empty — site still renders
         setProducts([]);
