@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ShoppingCart, Search } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 type Product = {
   id: string;
@@ -31,8 +30,9 @@ export default function ShopPage() {
   useEffect(() => {
     fetch(PRODUCTS_API)
       .then((r) => r.json())
-      .then((data) => {
-        setProducts(data);
+      .then((data: Product[]) => {
+        // Only show in-stock items
+        setProducts(data.filter((p) => p.inStock && (p.stockQuantity ?? 0) > 0));
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -47,11 +47,7 @@ export default function ShopPage() {
     return catMatch && searchMatch;
   });
 
-  // Sort: in-stock first, then alphabetical
-  const sorted = [...filtered].sort((a, b) => {
-    if (a.inStock !== b.inStock) return a.inStock ? -1 : 1;
-    return a.name.localeCompare(b.name);
-  });
+  const sorted = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <main className="min-h-screen bg-[#0A0A0A] pt-8 pb-24">
@@ -108,27 +104,13 @@ export default function ShopPage() {
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {sorted.map((product) => {
-                const outOfStock =
-                  !product.inStock || (product.stockQuantity ?? 0) <= 0;
-                return (
+              {sorted.map((product) => (
                   <Link
                     key={product.id}
                     href={`/shop/${product.slug}`}
                     className="group"
                   >
-                    <Card
-                      className={`bg-[#111] border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden ${
-                        outOfStock ? "opacity-60" : ""
-                      }`}
-                    >
-                      {outOfStock && (
-                        <div className="absolute top-3 left-3 z-10">
-                          <Badge className="bg-white/10 text-white/60 border-0 text-[10px] font-bold uppercase tracking-wider rounded-md px-2.5 py-1">
-                            Out of Stock
-                          </Badge>
-                        </div>
-                      )}
+                    <Card className="bg-[#111] border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden">
 
                       {/* Product image */}
                       <div className="aspect-square bg-gradient-to-br from-[#111] to-[#0d0d0d] flex items-center justify-center border-b border-white/5 relative overflow-hidden rounded-t-2xl">
@@ -170,22 +152,15 @@ export default function ShopPage() {
                           <span className="text-xl font-black text-white">
                             ${parseFloat(product.price).toFixed(2)}
                           </span>
-                          <span
-                            className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${
-                              outOfStock
-                                ? "text-white/40"
-                                : "text-accent"
-                            }`}
-                          >
+                          <span className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-accent">
                             <ShoppingCart className="w-3.5 h-3.5" />
-                            {outOfStock ? "Soon" : "View"}
+                            View
                           </span>
                         </div>
                       </div>
                     </Card>
                   </Link>
-                );
-              })}
+              ))}
             </div>
 
             {sorted.length === 0 && (
