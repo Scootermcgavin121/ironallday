@@ -18,7 +18,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
         {/* Eyebrow */}
-        <p className="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-6">
+        <p className="text-accent text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em] mb-6">
           Research-Grade Peptides
         </p>
 
