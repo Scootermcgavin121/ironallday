@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Shop", href: "#shop" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Shop", href: "/shop" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -40,13 +41,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#shop"
+            <Link
+              href="/shop"
               className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors"
             >
               <ShoppingCart className="w-4 h-4" />
               Shop Now
-            </a>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}

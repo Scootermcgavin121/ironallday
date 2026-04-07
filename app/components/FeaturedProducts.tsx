@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/button";
 type Product = {
   id: string;
   name: string;
+  slug: string;
   subtitle: string | null;
   price: string;
   category: string;
@@ -78,9 +80,9 @@ export default function FeaturedProducts() {
             const tag = PRODUCT_TAGS[product.id];
             const outOfStock = !product.inStock || (product.stockQuantity ?? 0) <= 0;
             return (
+              <Link key={product.id} href={`/shop/${product.slug}`} className="group">
               <Card
-                key={product.id}
-                className={`group bg-surface border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden ${outOfStock ? "opacity-60" : ""}`}
+                className={`bg-surface border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden ${outOfStock ? "opacity-60" : ""}`}
               >
                 {outOfStock && (
                   <div className="absolute top-3 left-3 z-10">
@@ -97,14 +99,24 @@ export default function FeaturedProducts() {
                   </div>
                 )}
 
-                {/* Product image placeholder */}
+                {/* Product image */}
                 <div className="aspect-square bg-gradient-to-br from-[#111] to-[#0d0d0d] flex items-center justify-center border-b border-white/5 relative overflow-hidden rounded-t-2xl">
-                  <div className="absolute inset-0 bg-accent/[0.02] group-hover:bg-accent/[0.05] transition-colors" />
-                  <div className="text-center relative z-10">
-                    <div className="text-5xl font-black text-white/[0.08] group-hover:text-white/[0.12] uppercase transition-colors">
-                      {product.name.slice(0, 3)}
-                    </div>
-                  </div>
+                  {product.image ? (
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <>
+                      <div className="absolute inset-0 bg-accent/[0.02] group-hover:bg-accent/[0.05] transition-colors" />
+                      <div className="text-center relative z-10">
+                        <div className="text-5xl font-black text-white/[0.08] group-hover:text-white/[0.12] uppercase transition-colors">
+                          {product.name.slice(0, 3)}
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Info */}
@@ -122,20 +134,20 @@ export default function FeaturedProducts() {
                     <span className="text-xl font-black text-foreground">
                       ${parseFloat(product.price).toFixed(2)}
                     </span>
-                    <Button
-                      size="sm"
-                      className={`text-xs font-bold uppercase tracking-wider gap-2 rounded-lg transition-colors ${
+                    <span
+                      className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${
                         outOfStock
-                          ? "bg-white/5 text-white/40 cursor-default"
-                          : "bg-accent/10 hover:bg-accent text-accent hover:text-white"
+                          ? "text-white/40"
+                          : "text-accent"
                       }`}
                     >
                       <ShoppingCart className="w-3.5 h-3.5" />
-                      {outOfStock ? "Soon" : "Add"}
-                    </Button>
+                      {outOfStock ? "Soon" : "View"}
+                    </span>
                   </div>
                 </div>
               </Card>
+              </Link>
             );
           })}
         </div>
