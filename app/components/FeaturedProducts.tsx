@@ -81,12 +81,20 @@ export default function FeaturedProducts() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product) => {
             const tag = PRODUCT_TAGS[product.id];
+            const outOfStock = !product.inStock || (product.stockQuantity ?? 0) <= 0;
             return (
               <Card
                 key={product.id}
-                className="group bg-surface border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden"
+                className={`group bg-surface border-white/5 hover:border-accent/30 transition-all duration-300 relative overflow-hidden ${outOfStock ? "opacity-60" : ""}`}
               >
-                {tag && (
+                {outOfStock && (
+                  <div className="absolute top-3 left-3 z-10">
+                    <Badge className="bg-white/10 text-white/60 border-0 text-[10px] font-bold uppercase tracking-wider rounded-md px-2.5 py-1">
+                      Out of Stock
+                    </Badge>
+                  </div>
+                )}
+                {tag && !outOfStock && (
                   <div className="absolute top-3 right-3 z-10">
                     <Badge className="bg-accent text-white border-0 text-[10px] font-bold uppercase tracking-wider rounded-md px-2.5 py-1">
                       {tag}
@@ -121,10 +129,14 @@ export default function FeaturedProducts() {
                     </span>
                     <Button
                       size="sm"
-                      className="bg-accent/10 hover:bg-accent text-accent hover:text-white text-xs font-bold uppercase tracking-wider gap-2 rounded-lg transition-colors"
+                      className={`text-xs font-bold uppercase tracking-wider gap-2 rounded-lg transition-colors ${
+                        outOfStock
+                          ? "bg-white/5 text-white/40 cursor-default"
+                          : "bg-accent/10 hover:bg-accent text-accent hover:text-white"
+                      }`}
                     >
                       <ShoppingCart className="w-3.5 h-3.5" />
-                      Add
+                      {outOfStock ? "Soon" : "Add"}
                     </Button>
                   </div>
                 </div>
