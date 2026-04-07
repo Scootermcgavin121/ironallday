@@ -20,7 +20,7 @@ type Product = {
   stockQuantity: number | null;
 };
 
-const PRODUCTS_API = "https://lumevara.com/api/products";
+const PRODUCTS_API = "https://lumevara.com/api/products?brand=iad";
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);

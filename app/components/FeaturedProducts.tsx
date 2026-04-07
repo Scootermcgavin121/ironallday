@@ -29,7 +29,7 @@ const PRODUCT_TAGS: Record<string, string> = {
 };
 
 // Both sites share the same product catalog — one DB, one admin
-const PRODUCTS_API = "https://lumevara.com/api/products";
+const PRODUCTS_API = "https://lumevara.com/api/products?brand=iad";
 
 export default function FeaturedProducts() {
   const [products, setProducts] = useState<Product[]>([]);
