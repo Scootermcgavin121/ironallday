@@ -26,9 +26,8 @@ const PRODUCT_TAGS: Record<string, string> = {
   "ghk-cu-100mg": "Staff Pick",
 };
 
-const LUMEVARA_API = "https://lumevara.com/api/products?brand=iad";
-// Fallback to lumevara brand if no IAD products exist yet
-const FALLBACK_API = "https://lumevara.com/api/products?brand=lumevara";
+// Both sites share the same product catalog — one DB, one admin
+const PRODUCTS_API = "https://lumevara.com/api/products";
 
 export default function FeaturedProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -37,19 +36,13 @@ export default function FeaturedProducts() {
   useEffect(() => {
     async function load() {
       try {
-        let res = await fetch(LUMEVARA_API, { next: { revalidate: 60 } } as RequestInit);
-        let data = await res.json();
-        // If no IAD products, fall back to Lumevara products
-        if (!data.length) {
-          res = await fetch(FALLBACK_API, { next: { revalidate: 60 } } as RequestInit);
-          data = await res.json();
-        }
-        // Only show in-stock products (includes supplies like bac water, pens)
+        const res = await fetch(PRODUCTS_API, { next: { revalidate: 60 } } as RequestInit);
+        const data = await res.json();
+        // Only show in-stock products
         const inStock = data.filter((p: Product) => p.inStock && (p.stockQuantity ?? 0) > 0);
         inStock.sort((a: Product, b: Product) => a.name.localeCompare(b.name));
         setProducts(inStock);
       } catch {
-        // Fallback to empty — site still renders
         setProducts([]);
       } finally {
         setLoading(false);
