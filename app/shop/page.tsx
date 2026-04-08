@@ -47,7 +47,13 @@ export default function ShopPage() {
     return catMatch && searchMatch;
   });
 
-  const sorted = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+  const sorted = [...filtered].sort((a, b) => {
+    // Supplies (bac water, kits) always last
+    const aSup = a.category === "supplies" ? 1 : 0;
+    const bSup = b.category === "supplies" ? 1 : 0;
+    if (aSup !== bSup) return aSup - bSup;
+    return a.name.localeCompare(b.name);
+  });
 
   return (
     <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24">
