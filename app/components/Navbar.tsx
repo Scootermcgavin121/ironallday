@@ -6,8 +6,9 @@ import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
 
 const NAV_LINKS = [
+  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -19,7 +20,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-40 md:h-48">
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/images/iad-logo.png"
               alt="Iron All Day"
@@ -28,7 +29,7 @@ export default function Navbar() {
               className="h-36 md:h-44 w-auto object-contain"
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
