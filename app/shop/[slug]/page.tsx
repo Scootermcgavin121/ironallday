@@ -78,7 +78,7 @@ export default function ProductDetailPage() {
     !product.inStock || (product.stockQuantity ?? 0) <= 0;
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] pb-24">
+    <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24">
       {/* Breadcrumbs */}
       <nav className="max-w-6xl mx-auto px-6 py-6 text-sm text-gray-500">
         <Link href="/" className="hover:text-white transition">

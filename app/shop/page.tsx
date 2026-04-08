@@ -50,7 +50,7 @@ export default function ShopPage() {
   const sorted = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] pt-8 pb-24">
+    <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
