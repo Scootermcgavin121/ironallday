@@ -1,4 +1,4 @@
-import { FlaskConical, ShieldCheck, FileCheck, Truck } from "lucide-react";
+import { FlaskConical, ShieldCheck, FileCheck, MapPin } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const BADGES = [
@@ -18,9 +18,9 @@ const BADGES = [
     description: "Certificate of Analysis available for every product",
   },
   {
-    icon: Truck,
-    title: "Fast Shipping",
-    description: "Same-day processing, discreet packaging",
+    icon: MapPin,
+    title: "US Based",
+    description: "Delaware-registered, US-operated company",
   },
 ];
 

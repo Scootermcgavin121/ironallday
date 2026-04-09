@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 const STATS = [
   { icon: FlaskConical, value: "99%+", label: "Purity Verified" },
   { icon: Package, value: "COA", label: "Every Batch" },
-  { icon: Clock, value: "Fast", label: "Shipping" },
+  { icon: Clock, value: "US", label: "Based" },
 ];
 
 export default function AboutSection() {
