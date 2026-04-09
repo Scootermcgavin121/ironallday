@@ -10,7 +10,7 @@ const FOOTER_LINKS = {
   ],
   Company: [
     { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Reach Out", href: "#contact" },
     { label: "FAQ", href: "#" },
     { label: "Shipping Policy", href: "#" },
   ],

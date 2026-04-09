@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Iron All Day — Performance. Recovery. Longevity.",
+  title: "Iron All Day — Fuel. Focus. Finish.",
   description:
-    "Research-grade peptides for serious athletes. BPC-157, TB-500, Tirzepatide, and more. 99%+ purity, third-party tested, COA verified.",
+    "Science-backed research compounds for strength, recovery, and relentless progress. 99%+ purity, third-party tested, COA verified.",
   keywords: [
     "peptides",
     "BPC-157",
@@ -22,7 +22,31 @@ export const metadata: Metadata = {
     "performance",
     "recovery",
     "longevity",
+    "iron all day",
   ],
+  openGraph: {
+    title: "Iron All Day — Fuel. Focus. Finish.",
+    description:
+      "Science-backed compounds. Real results. Premium performance solutions for strength, recovery, and relentless progress.",
+    url: "https://ironallday.com",
+    siteName: "Iron All Day",
+    images: [
+      {
+        url: "https://ironallday.com/images/og-card.png",
+        width: 1200,
+        height: 630,
+        alt: "Iron All Day — Science-Backed Compounds. Real Results.",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Iron All Day — Fuel. Focus. Finish.",
+    description:
+      "Science-backed compounds. Real results. Premium performance solutions for strength, recovery, and relentless progress.",
+    images: ["https://ironallday.com/images/og-card.png"],
+  },
   icons: {
     icon: [
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },

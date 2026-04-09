@@ -3,6 +3,7 @@ import TrustBadges from "./components/TrustBadges";
 import Categories from "./components/Categories";
 import FeaturedProducts from "./components/FeaturedProducts";
 import AboutSection from "./components/AboutSection";
+import ReachOut from "./components/ReachOut";
 import Newsletter from "./components/Newsletter";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Categories />
       <FeaturedProducts />
       <AboutSection />
+      <ReachOut />
       <Newsletter />
     </main>
   );
