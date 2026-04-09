@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Iron All Day — Fuel. Focus. Finish.",
+  title: "Iron All Day — Research-Grade Peptides",
   description:
-    "Science-backed research compounds for strength, recovery, and relentless progress. 99%+ purity, third-party tested, COA verified.",
+    "Premium research peptides. 99%+ purity, third-party tested, full Certificate of Analysis on every batch. For research purposes only.",
   keywords: [
     "peptides",
     "BPC-157",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     "iron all day",
   ],
   openGraph: {
-    title: "Iron All Day — Fuel. Focus. Finish.",
+    title: "Iron All Day — Research-Grade Peptides",
     description:
-      "Science-backed compounds. Real results. Premium performance solutions for strength, recovery, and relentless progress.",
+      "Premium research peptides. 99%+ purity, third-party tested, COA verified. For research purposes only.",
     url: "https://ironallday.com",
     siteName: "Iron All Day",
     images: [
@@ -35,16 +35,16 @@ export const metadata: Metadata = {
         url: "https://ironallday.com/images/og-card.png?v=6",
         width: 1200,
         height: 630,
-        alt: "Iron All Day — Science-Backed Compounds. Real Results.",
+        alt: "Iron All Day — Research-Grade Peptides. 99%+ Purity.",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Iron All Day — Fuel. Focus. Finish.",
+    title: "Iron All Day — Research-Grade Peptides",
     description:
-      "Science-backed compounds. Real results. Premium performance solutions for strength, recovery, and relentless progress.",
+      "Premium research peptides. 99%+ purity, third-party tested, COA verified. For research purposes only.",
     images: ["https://ironallday.com/images/og-card.png?v=6"],
   },
   icons: {

@@ -24,17 +24,17 @@ export default function Hero() {
 
         {/* Main headline */}
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.9] mb-6">
-          Performance.
+          Purity.
           <br />
-          <span className="text-accent">Recovery.</span>
+          <span className="text-accent">Transparency.</span>
           <br />
-          Longevity.
+          Results.
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-          Research-Grade Peptides for Serious Athletes. 99%+ purity,
-          third-party tested, COA verified.
+          Research-grade peptides. 99%+ purity, third-party tested,
+          full Certificate of Analysis on every batch.
         </p>
 
         {/* CTA buttons */}

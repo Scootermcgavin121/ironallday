@@ -2,9 +2,9 @@ import { FlaskConical, Package, Clock } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const STATS = [
-  { icon: FlaskConical, value: "99%+", label: "Purity" },
-  { icon: Package, value: "50K+", label: "Orders Shipped" },
-  { icon: Clock, value: "24h", label: "Avg. Ship Time" },
+  { icon: FlaskConical, value: "99%+", label: "Purity Verified" },
+  { icon: Package, value: "COA", label: "Every Batch" },
+  { icon: Clock, value: "Fast", label: "Shipping" },
 ];
 
 export default function AboutSection() {
@@ -18,26 +18,29 @@ export default function AboutSection() {
               About Us
             </p>
             <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight mb-6 leading-tight">
-              Built by Athletes,
+              Research-Grade
               <br />
-              for Athletes.
+              Compounds.
             </h2>
             <div className="space-y-4 text-muted leading-relaxed">
               <p>
-                Iron All Day was founded on a simple belief: the people pushing
-                their bodies the hardest deserve access to the highest-quality
-                research compounds available.
+                Iron All Day exists for one reason: to provide the
+                highest-quality research peptides available. Period.
               </p>
               <p>
-                Every product we carry is sourced from GMP-compliant facilities,
-                third-party tested for purity, and backed by a Certificate of
-                Analysis. No shortcuts. No compromises.
+                Every compound we carry is sourced from GMP-compliant
+                facilities, independently tested for purity by third-party
+                laboratories, and backed by a full Certificate of Analysis.
+                No shortcuts. No compromises.
               </p>
               <p>
-                We&apos;re not a faceless supplier. We&apos;re researchers,
-                athletes, and biohackers who use the same protocols we provide.
-                When we say 99%+ purity, we mean it — because we stake our own
-                performance on it.
+                Transparency isn&apos;t a marketing line — it&apos;s our
+                standard. Every COA is available for review. When we say
+                99%+ purity, the data backs it up.
+              </p>
+              <p className="text-xs text-muted/60 mt-2">
+                All products are sold strictly for laboratory and research
+                purposes only. Not for human consumption.
               </p>
             </div>
 
