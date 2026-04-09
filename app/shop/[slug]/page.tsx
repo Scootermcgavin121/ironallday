@@ -53,6 +53,31 @@ export default function ProductDetailPage() {
       .catch(() => setLoading(false));
   }, [slug]);
 
+  // Build JSON-LD schema for the product
+  const productJsonLd = product
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.name,
+        description: product.description || `${product.name} — research peptide for laboratory use only.`,
+        image: product.image || undefined,
+        sku: product.id,
+        brand: {
+          "@type": "Brand",
+          name: "Iron All Day",
+        },
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          price: parseFloat(product.price).toFixed(2),
+          availability: product.inStock
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          url: `https://ironallday.com/shop/${product.slug}`,
+        },
+      }
+    : null;
+
   if (loading) {
     return (
       <main className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
@@ -80,6 +105,13 @@ export default function ProductDetailPage() {
 
   return (
     <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24">
+      {/* JSON-LD Product Schema */}
+      {productJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        />
+      )}
       {/* Breadcrumbs */}
       <nav className="max-w-6xl mx-auto px-6 py-6 text-sm text-gray-500">
         <Link href="/" className="hover:text-white transition">

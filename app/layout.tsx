@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     "BPC-157",
     "TB-500",
     "research peptides",
-    "performance",
-    "recovery",
-    "longevity",
+    "research compounds",
+    "COA verified peptides",
+    "HPLC tested",
     "iron all day",
   ],
   openGraph: {

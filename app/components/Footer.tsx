@@ -4,9 +4,9 @@ import { Separator } from "@/components/ui/separator";
 const FOOTER_LINKS = {
   Shop: [
     { label: "All Products", href: "#shop" },
-    { label: "Muscle & Recovery", href: "#shop" },
-    { label: "Fat Loss", href: "#shop" },
-    { label: "Longevity", href: "#shop" },
+    { label: "Peptide Compounds", href: "#shop" },
+    { label: "Research Blends", href: "#shop" },
+    { label: "Supplies & Accessories", href: "#shop" },
   ],
   Company: [
     { label: "About", href: "#about" },
@@ -44,8 +44,8 @@ export default function Footer() {
               className="h-36 w-auto object-contain"
             />
             <p className="text-sm text-muted mt-4 leading-relaxed">
-              Research-grade peptides for serious athletes. Performance.
-              Recovery. Longevity.
+              Research-grade peptide compounds. 99%+ purity, COA verified
+              via HPLC and mass spectrometry. For research purposes only.
             </p>
             {/* Socials */}
             <div className="flex gap-3 mt-6">
