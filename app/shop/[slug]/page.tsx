@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ShoppingCart, ArrowLeft, FlaskConical } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { productDetails } from "../../data/product-details";
 
 type Product = {
   id: string;
@@ -161,6 +162,111 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </section>
+
+      {/* Specification Table */}
+      {product && productDetails[product.id] && (() => {
+        const details = productDetails[product.id];
+        const props = [
+          ["Chemical Formula", details.properties.chemicalFormula],
+          ["Synonyms", details.properties.synonyms],
+          ["Molar Mass", details.properties.molarMass],
+          ["CAS Number", details.properties.casNumber],
+          ["PubChem ID", details.properties.pubchemId],
+          ["Total Active Ingredient", details.properties.activeIngredient],
+          ["Shelf Life", details.properties.shelfLife],
+        ].filter(([, val]) => val && val !== "N/A" && val !== "");
+
+        return (
+          <>
+            {/* Spec Table */}
+            <section className="max-w-6xl mx-auto px-6 mt-16">
+              <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-6">
+                Specification
+              </h2>
+              <div className="rounded-2xl overflow-hidden border border-white/5">
+                {props.map(([label, value], i) => (
+                  <div
+                    key={label}
+                    className={`flex ${
+                      i % 2 === 0 ? "bg-[#111]" : "bg-[#0d0d0d]"
+                    } border-b border-white/5 last:border-b-0`}
+                  >
+                    <div className="w-1/2 px-6 py-4 font-bold text-sm text-white/80 uppercase tracking-wider">
+                      {label}
+                    </div>
+                    <div className="w-1/2 px-6 py-4 text-sm text-gray-400 font-mono">
+                      {value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* About This Compound */}
+            {details.longDescription && (
+              <section className="max-w-6xl mx-auto px-6 mt-16">
+                <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-6">
+                  About This Compound
+                </h2>
+                <div
+                  className="bg-[#111] rounded-2xl border border-white/5 p-8 prose prose-invert max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed prose-li:text-gray-300 prose-strong:text-white prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3"
+                  dangerouslySetInnerHTML={{ __html: details.longDescription }}
+                />
+              </section>
+            )}
+
+            {/* Peer-Reviewed Studies */}
+            {details.studies && details.studies.length > 0 && (
+              <section className="max-w-6xl mx-auto px-6 mt-16">
+                <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-6">
+                  Peer-Reviewed Studies
+                </h2>
+                <div className="grid gap-4">
+                  {details.studies.map((study, i) => (
+                    <div
+                      key={i}
+                      className="bg-[#111] rounded-2xl border border-white/5 p-6"
+                    >
+                      {study.url ? (
+                        <a
+                          href={study.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-bold text-accent hover:text-white transition-colors"
+                        >
+                          {study.title}
+                        </a>
+                      ) : (
+                        <p className="font-bold text-white">{study.title}</p>
+                      )}
+                      {study.authors && (
+                        <p className="text-sm text-gray-500 mt-1">{study.authors}</p>
+                      )}
+                      {study.journal && (
+                        <p className="text-xs text-gray-600 mt-1 italic">
+                          {study.journal}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Disclaimer */}
+            <section className="max-w-6xl mx-auto px-6 mt-16">
+              <div className="bg-white/[0.02] rounded-2xl border border-white/5 p-6 text-center">
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  All products are sold strictly for laboratory and research use only.
+                  Not for human consumption. No statements on this page have been
+                  evaluated by the FDA. These products are not intended to diagnose,
+                  treat, cure, or prevent any disease.
+                </p>
+              </div>
+            </section>
+          </>
+        );
+      })()}
 
       {/* Related Products */}
       {related.length > 0 && (
