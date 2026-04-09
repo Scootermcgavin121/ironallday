@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Iron All Day",
     images: [
       {
-        url: "https://ironallday.com/images/og-card.png?v=3",
+        url: "https://ironallday.com/images/og-card.png?v=4",
         width: 1200,
         height: 630,
         alt: "Iron All Day — Science-Backed Compounds. Real Results.",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Iron All Day — Fuel. Focus. Finish.",
     description:
       "Science-backed compounds. Real results. Premium performance solutions for strength, recovery, and relentless progress.",
-    images: ["https://ironallday.com/images/og-card.png?v=3"],
+    images: ["https://ironallday.com/images/og-card.png?v=4"],
   },
   icons: {
     icon: [
