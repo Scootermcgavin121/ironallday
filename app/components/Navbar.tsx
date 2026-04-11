@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ShoppingCart } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { itemCount, setIsOpen } = useCart();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/5">
@@ -43,13 +45,18 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <Link
-              href="/shop"
-              className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors"
+            <button
+              onClick={() => setIsOpen(true)}
+              className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors relative"
             >
               <ShoppingCart className="w-4 h-4" />
-              Shop Now
-            </Link>
+              Cart
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-black text-accent">
+                  {itemCount}
+                </span>
+              )}
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -77,14 +84,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#shop"
-              onClick={() => setOpen(false)}
+            <button
+              onClick={() => { setIsOpen(true); setOpen(false); }}
               className="flex items-center justify-center gap-2 w-full bg-accent text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors"
             >
               <ShoppingCart className="w-4 h-4" />
-              Shop Now
-            </a>
+              Cart {itemCount > 0 && `(${itemCount})`}
+            </button>
           </div>
         </div>
       )}

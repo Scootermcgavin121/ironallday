@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ShoppingCart, ArrowLeft, FlaskConical } from "lucide-react";
+import { ArrowLeft, FlaskConical } from "lucide-react";
+import AddToCartButton from "../../components/AddToCartButton";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { productDetails } from "../../data/product-details";
@@ -177,17 +178,24 @@ export default function ProductDetailPage() {
                 {product.description}
               </p>
             )}
-            <button
-              className={`flex items-center justify-center gap-3 font-bold uppercase tracking-wider text-sm px-8 py-4 rounded-xl transition-all ${
-                outOfStock
-                  ? "bg-white/5 text-white/40 cursor-not-allowed"
-                  : "bg-accent hover:bg-accent/80 text-white"
-              }`}
-              disabled={outOfStock}
-            >
-              <ShoppingCart className="w-5 h-5" />
-              {outOfStock ? "Out of Stock" : "Add to Cart"}
-            </button>
+            {outOfStock ? (
+              <button
+                className="flex items-center justify-center gap-3 font-bold uppercase tracking-wider text-sm px-8 py-4 rounded-xl bg-white/5 text-white/40 cursor-not-allowed"
+                disabled
+              >
+                Out of Stock
+              </button>
+            ) : (
+              <AddToCartButton
+                product={{
+                  id: product.id,
+                  name: product.name,
+                  price: parseFloat(product.price),
+                  image: product.image || "/images/product-vial.png",
+                  format: product.format || "Lyophilized vial",
+                }}
+              />
+            )}
             <p className="text-xs text-gray-600 mt-4 italic">
               For research purposes only. Not for human consumption.
             </p>
