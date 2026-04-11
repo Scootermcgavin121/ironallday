@@ -23,7 +23,7 @@ type Category = {
   displayOrder: number;
 };
 
-const CATEGORIES_API = "https://lumevara.com/api/categories";
+const CATEGORIES_API = "/api/categories";
 
 export default function Categories() {
   const [categories, setCategories] = useState<Category[]>([]);

@@ -23,7 +23,7 @@ type Product = {
   stockQuantity: number | null;
 };
 
-const PRODUCTS_API = "https://lumevara.com/api/products";
+const PRODUCTS_API = "/api/products";
 
 export default function ProductDetailPage() {
   const { slug } = useParams();

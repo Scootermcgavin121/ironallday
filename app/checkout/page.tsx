@@ -19,8 +19,6 @@ interface ShippingForm {
   zip: string;
 }
 
-const API_BASE = "https://lumevara.com";
-
 export default function CheckoutPage() {
   const { items, total, itemCount, clearCart } = useCart();
   const [step, setStep] = useState<CheckoutStep>("shipping");
@@ -63,7 +61,7 @@ export default function CheckoutPage() {
     setSubmitting(true);
 
     try {
-      const res = await fetch(`${API_BASE}/api/checkout`, {
+      const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -74,7 +72,6 @@ export default function CheckoutPage() {
           })),
           shipping: { ...shipping, country: "US" },
           researchAgreed,
-          brand: "iad",
         }),
       });
 

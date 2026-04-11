@@ -28,8 +28,7 @@ const PRODUCT_TAGS: Record<string, string> = {
   "ghk-cu-100mg": "Staff Pick",
 };
 
-// Both sites share the same product catalog — one DB, one admin
-const PRODUCTS_API = "https://lumevara.com/api/products?brand=iad";
+const PRODUCTS_API = "/api/products";
 
 export default function FeaturedProducts() {
   const [products, setProducts] = useState<Product[]>([]);
