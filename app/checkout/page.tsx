@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
-import Image from "next/image";
 import Link from "next/link";
 
 type CheckoutStep = "shipping" | "review" | "confirmation";
@@ -279,8 +278,8 @@ export default function CheckoutPage() {
               <div className="space-y-3 mb-4">
                 {items.map((item) => (
                   <div key={item.id} className="flex gap-3">
-                    <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 relative bg-white/5">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                    <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 bg-white/5">
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-white truncate">{item.name}</p>

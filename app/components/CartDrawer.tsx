@@ -1,7 +1,6 @@
 "use client";
 
 import { useCart } from "../context/CartContext";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function CartDrawer() {
@@ -58,8 +57,8 @@ export default function CartDrawer() {
                   key={item.id}
                   className="flex gap-4 bg-white/5 rounded-2xl p-3 border border-white/10"
                 >
-                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 relative bg-white/5">
-                    <Image src={item.image} alt={item.name} fill className="object-cover" />
+                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-white/5">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-sm font-semibold text-white truncate">{item.name}</h3>
