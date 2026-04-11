@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-40 md:h-48">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
@@ -29,7 +29,7 @@ export default function Navbar() {
               alt="Iron All Day"
               width={300}
               height={90}
-              className="h-36 md:h-44 w-auto object-contain"
+              className="h-14 md:h-18 w-auto object-contain"
               priority
             />
           </Link>
@@ -47,12 +47,12 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => setIsOpen(true)}
-              className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors relative"
+              className="text-muted hover:text-accent transition-colors relative p-2"
+              aria-label="Cart"
             >
-              <ShoppingCart className="w-4 h-4" />
-              Cart
+              <ShoppingCart className="w-5 h-5" />
               {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-black text-accent">
+                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[10px] font-black text-white">
                   {itemCount}
                 </span>
               )}

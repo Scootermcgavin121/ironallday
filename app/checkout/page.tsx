@@ -96,7 +96,7 @@ export default function CheckoutPage() {
   // Empty cart
   if (items.length === 0 && step !== "confirmation") {
     return (
-      <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24 px-6">
+      <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-3xl font-black text-white uppercase tracking-tight mb-4">Your Cart is Empty</h1>
           <p className="text-gray-400 mb-6">Add some research compounds to get started.</p>
@@ -114,7 +114,7 @@ export default function CheckoutPage() {
   // Confirmation
   if (step === "confirmation") {
     return (
-      <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24 px-6">
+      <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
   const inputClass = "w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent disabled:opacity-50";
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24 px-6">
+    <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         <h1 className="text-3xl font-black text-white uppercase tracking-tight mb-8">Checkout</h1>
 
@@ -271,7 +271,7 @@ export default function CheckoutPage() {
 
           {/* Right: Order Summary */}
           <div className="lg:col-span-2">
-            <div className="bg-white/5 rounded-2xl p-6 border border-white/10 sticky top-52">
+            <div className="bg-white/5 rounded-2xl p-6 border border-white/10 sticky top-32">
               <h2 className="text-lg font-bold text-white uppercase tracking-wider mb-4">
                 Order Summary ({itemCount})
               </h2>

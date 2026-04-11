@@ -2,7 +2,7 @@ import AboutSection from "../components/AboutSection";
 
 export default function AboutPage() {
   return (
-    <main className="pt-48">
+    <main className="pt-28">
       <AboutSection />
     </main>
   );

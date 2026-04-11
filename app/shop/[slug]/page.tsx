@@ -105,7 +105,7 @@ export default function ProductDetailPage() {
     !product.inStock || (product.stockQuantity ?? 0) <= 0;
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24">
+    <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24">
       {/* JSON-LD Product Schema */}
       {productJsonLd && (
         <script

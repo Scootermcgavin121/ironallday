@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: Props) {
   };
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24">
+    <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24">
       {/* JSON-LD Article Schema */}
       <script
         type="application/ld+json"

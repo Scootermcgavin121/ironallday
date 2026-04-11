@@ -13,7 +13,7 @@ export default function BlogPage() {
   );
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] pt-48 pb-24">
+    <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24">
       {/* Header */}
       <section className="max-w-5xl mx-auto px-6 mb-16">
         <p className="text-accent text-xs font-bold uppercase tracking-[0.3em] mb-4">
