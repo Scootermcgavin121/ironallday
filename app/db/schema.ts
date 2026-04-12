@@ -99,3 +99,14 @@ export const cartItems = pgTable("cart_items", {
   quantity: integer("quantity").default(1).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const cartReservations = pgTable("cart_reservations", {
+  id: serial("id").primaryKey(),
+  sessionId: varchar("session_id", { length: 255 }).notNull(),
+  productId: text("product_id")
+    .references(() => products.id)
+    .notNull(),
+  quantity: integer("quantity").notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});

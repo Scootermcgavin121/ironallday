@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import ReservationTimer from "../components/ReservationTimer";
 import Link from "next/link";
 
 type CheckoutStep = "shipping" | "review" | "confirmation";
@@ -19,7 +20,7 @@ interface ShippingForm {
 }
 
 export default function CheckoutPage() {
-  const { items, total, itemCount, clearCart } = useCart();
+  const { items, total, itemCount, clearCart, sessionId } = useCart();
   const [step, setStep] = useState<CheckoutStep>("shipping");
   const [researchAgreed, setResearchAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -71,6 +72,7 @@ export default function CheckoutPage() {
           })),
           shipping: { ...shipping, country: "US" },
           researchAgreed,
+          sessionId,
         }),
       });
 
@@ -150,7 +152,8 @@ export default function CheckoutPage() {
   return (
     <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24 px-6">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-black text-white uppercase tracking-tight mb-8">Checkout</h1>
+        <h1 className="text-3xl font-black text-white uppercase tracking-tight mb-4">Checkout</h1>
+        <ReservationTimer className="mb-6" />
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left: Form */}

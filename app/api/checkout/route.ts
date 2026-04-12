@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/app/db";
-import { orders, orderItems, products } from "@/app/db/schema";
-import { eq, inArray } from "drizzle-orm";
+import { orders, orderItems, products, cartReservations } from "@/app/db/schema";
+import { eq, inArray, lt } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +26,7 @@ interface CheckoutPayload {
     country: string;
   };
   researchAgreed: boolean;
+  sessionId?: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -51,6 +52,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Cleanup expired reservations
+    await db.delete(cartReservations).where(lt(cartReservations.expiresAt, new Date()));
+
+    // Verify reservation exists
+    if (body.sessionId) {
+      const reservations = await db
+        .select()
+        .from(cartReservations)
+        .where(eq(cartReservations.sessionId, body.sessionId));
+
+      if (reservations.length === 0) {
+        return NextResponse.json(
+          { error: "Your cart reservation has expired. Please add items to your cart again." },
+          { status: 409 }
+        );
+      }
+
+      const reservedMap = new Map(reservations.map((r) => [r.productId, r.quantity]));
+      for (const item of body.items) {
+        const reservedQty = reservedMap.get(item.id);
+        if (!reservedQty || reservedQty < item.quantity) {
+          return NextResponse.json(
+            { error: `Reservation mismatch for "${item.id}". Please refresh your cart.` },
+            { status: 409 }
+          );
+        }
+      }
+    }
+
     const productIds = body.items.map((i) => i.id);
     const dbProducts = await db
       .select()
@@ -62,16 +92,10 @@ export async function POST(request: NextRequest) {
     for (const item of body.items) {
       const dbProd = productMap.get(item.id);
       if (!dbProd) {
-        return NextResponse.json(
-          { error: `Product "${item.id}" not found.` },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: `Product "${item.id}" not found.` }, { status: 400 });
       }
       if (!dbProd.inStock) {
-        return NextResponse.json(
-          { error: `"${dbProd.name}" is currently out of stock.` },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: `"${dbProd.name}" is currently out of stock.` }, { status: 400 });
       }
     }
 
@@ -121,6 +145,11 @@ export async function POST(request: NextRequest) {
           updatedAt: new Date(),
         })
         .where(eq(products.id, item.id));
+    }
+
+    // Clear reservations after successful order
+    if (body.sessionId) {
+      await db.delete(cartReservations).where(eq(cartReservations.sessionId, body.sessionId));
     }
 
     return NextResponse.json({

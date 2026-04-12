@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "../context/CartContext";
+import ReservationTimer from "./ReservationTimer";
 import Link from "next/link";
 
 export default function CartDrawer() {
@@ -34,6 +35,9 @@ export default function CartDrawer() {
             </svg>
           </button>
         </div>
+
+        {/* Reservation Timer */}
+        <ReservationTimer className="mx-6 mt-3" />
 
         {/* Items */}
         <div className="flex-1 overflow-y-auto px-6 py-4">
