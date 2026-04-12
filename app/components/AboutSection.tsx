@@ -62,22 +62,14 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right — visual block */}
+          {/* Right — hero image */}
           <div className="relative">
-            <div className="aspect-square bg-gradient-to-br from-[#111] to-[#0d0d0d] border border-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 bg-accent/[0.02]" />
-              <div className="text-center px-8 relative z-10">
-                <div className="text-6xl sm:text-7xl font-black text-white/[0.06] uppercase leading-none">
-                  Iron
-                  <br />
-                  All
-                  <br />
-                  Day
-                </div>
-                <div className="mt-6 text-accent text-sm font-bold uppercase tracking-[0.3em]">
-                  Est. 2026
-                </div>
-              </div>
+            <div className="aspect-square rounded-2xl overflow-hidden border border-white/5">
+              <img
+                src="/images/about-hero.png"
+                alt="Research-grade peptide vial in laboratory setting"
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Accent glow */}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/10 rounded-full blur-3xl" />
