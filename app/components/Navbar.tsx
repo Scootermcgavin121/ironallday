@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, Search } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import SearchOverlay from "./SearchOverlay";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -16,6 +17,7 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { itemCount, setIsOpen } = useCart();
 
   return (
@@ -45,6 +47,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="text-muted hover:text-accent transition-colors p-2"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
             <button
               onClick={() => setIsOpen(true)}
               className="text-muted hover:text-accent transition-colors relative p-2"
@@ -85,6 +94,15 @@ export default function Navbar() {
               </a>
             ))}
             <button
+              onClick={() => { setSearchOpen(true); setOpen(false); }}
+              className="block text-sm font-semibold uppercase tracking-widest text-muted hover:text-accent transition-colors py-2"
+            >
+              <span className="flex items-center gap-2">
+                <Search className="w-4 h-4" />
+                Search
+              </span>
+            </button>
+            <button
               onClick={() => { setIsOpen(true); setOpen(false); }}
               className="flex items-center justify-center gap-2 w-full bg-accent text-white text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-2xl transition-colors"
             >
@@ -94,6 +112,8 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </nav>
   );
 }
